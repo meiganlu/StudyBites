@@ -1,11 +1,23 @@
+// src/components/SpotList.tsx
 import { StudySpot } from '@/types';
 import SpotCard from './SpotCard';
 
 interface SpotListProps {
   spots: StudySpot[];
+  isLoading: boolean;
 }
 
-export default function SpotList({ spots }: SpotListProps) {
+export default function SpotList({ spots, isLoading }: SpotListProps) {
+  if (isLoading) {
+    return (
+      <div className="text-center py-12">
+        <div className="animate-pulse">
+          <p className="text-gray-600">Loading study spots...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (spots.length === 0) {
     return (
       <div className="text-center py-12">
