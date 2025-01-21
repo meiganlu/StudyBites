@@ -1,7 +1,8 @@
 // src/app/page.tsx
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-radial from-[#eff5d8] to-[#dbd9f8] overflow-hidden">
+    <div className="min-h-screen bg-[#232323] bg-[radial-gradient(ellipse_at_top,#C4C3E3_0%,#F7F3E8_100%)]">
+    {/* // <div className="min-h-screen bg-gradient-to-radial from-[#eff5d8] to-[#ffffff]"> */}
       <div className="max-w-6xl mx-auto px-4 py-20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left">
