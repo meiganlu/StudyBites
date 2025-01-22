@@ -22,12 +22,12 @@ export default function SearchBar() {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           placeholder="Enter location (e.g., San Francisco)"
-          className="flex-1 px-4 py-2 rounded-lg bg-[#595959]/10 border border-white/20 text-[#232323] placeholder-gray-400 transition-all outline-none focus:ring-2 focus:ring-gray-500/50"
+          className="flex-1 px-4 py-2 rounded-lg bg-[#595959]/10 border border-white/20 text-[#595959] placeholder-gray-400 transition-all outline-none focus:ring-2 focus:ring-gray-500/50"
           required
         />
         <button
           type="submit"
-          className="px-6 py-2 bg-[#7E7E7E] hover:bg-[#9B9B9B] text-white rounded-lg transition-colors backdrop-blur-sm"
+          className="px-6 py-2 bg-[#839167] hover:bg-[#9da584] text-white rounded-lg transition-colors backdrop-blur-sm"
         >
           Search
         </button>
