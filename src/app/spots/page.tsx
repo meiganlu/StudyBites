@@ -1,4 +1,4 @@
-// src/app/spots/page.tsx
+// src/app/spots/page.tsx why
 'use client';
 
 import { useSearchParams } from 'next/navigation';
