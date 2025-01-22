@@ -4,12 +4,20 @@
 import { useSearchParams } from 'next/navigation';
 import SpotList from '@/components/SpotList';
 import Map from '@/components/Map';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { StudySpot } from '@/types';
 import { Loader } from '@googlemaps/js-api-loader';
 import { searchNearbyStudySpots } from '@/lib/places';
 
-export default function SearchResults() {
+function LoadingState() {
+  return (
+    <div className="flex items-center justify-center h-[60vh]">
+      <p className="text-[#515D5A]">Loading...</p>
+    </div>
+  );
+}
+
+function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const [viewMode, setViewMode] = useState<'list' | 'map'>('map');
@@ -106,5 +114,13 @@ export default function SearchResults() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <SearchResults />
+    </Suspense>
   );
 }
