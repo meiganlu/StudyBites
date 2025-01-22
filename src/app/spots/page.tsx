@@ -1,4 +1,3 @@
-// src/app/spots/page.tsx why
 'use client';
 
 import { useSearchParams } from 'next/navigation';
@@ -24,7 +23,6 @@ function SearchResults() {
   const [spots, setSpots] = useState<StudySpot[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fetch spots independently of the map view
   useEffect(() => {
     if (!query) {
       setIsLoading(false);

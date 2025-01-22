@@ -4,7 +4,6 @@ interface SpotCardProps {
   spot: StudySpot;
 }
 
-// src/components/SpotCard.tsx
 export default function SpotCard({ spot }: SpotCardProps) {
   return (
     <div className="bg-[#E5E7DC] hover:bg-[#CACFBA] rounded-xl p-4 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -15,7 +14,6 @@ export default function SpotCard({ spot }: SpotCardProps) {
         {spot.vicinity}
       </p>
       
-      {/* Study Score Indicator */}
       {spot.studyScore && spot.studyScore > 0 && (
         <div className="mt-2 sm:mt-3">
           <div className="flex items-center">
@@ -37,14 +35,12 @@ export default function SpotCard({ spot }: SpotCardProps) {
       )}
 
       <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-3">
-        {/* Regular rating */}
         {spot.rating && (
           <span className="text-xs sm:text-sm bg-[#BCC79E] px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[#2C4A3E] whitespace-nowrap">
             {spot.rating} ⭐
           </span>
         )}
 
-        {/* Review Keywords */}
         {spot.reviewMentions && spot.reviewMentions.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {spot.reviewMentions.slice(0, window.innerWidth < 640 ? 2 : 3).map((keyword) => (

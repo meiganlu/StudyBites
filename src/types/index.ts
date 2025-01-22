@@ -1,4 +1,3 @@
-// src/types/index.ts
 export interface StudySpot {
   id: string;
   name: string;

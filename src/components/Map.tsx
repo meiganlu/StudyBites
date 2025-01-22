@@ -1,4 +1,3 @@
-// src/components/Map.tsx
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -25,8 +24,8 @@ export default function Map({ searchQuery, onSpotsFound }: MapProps) {
    if (!searchQuery) return;
 
    clearMarkers();
-   onSpotsFound([]); // Clear previous results when search changes
-
+   onSpotsFound([]); 
+   
    const loader = new Loader({
      apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
      version: "weekly",

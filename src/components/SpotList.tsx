@@ -1,4 +1,3 @@
-// src/components/SpotList.tsx
 import { StudySpot } from '@/types';
 import SpotCard from './SpotCard';
 import { useState, useEffect } from 'react';
@@ -10,13 +9,10 @@ interface SpotListProps {
 
 export default function SpotList({ spots, isLoading }: SpotListProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  // Adjust spots per page based on screen size
   const [spotsPerPage, setSpotsPerPage] = useState(6);
 
-  // Update spots per page based on window size
   useEffect(() => {
     function handleResize() {
-      // Mobile: 2 spots, Tablet: 4 spots, Desktop: 6 spots
       if (window.innerWidth < 640) {
         setSpotsPerPage(2);
       } else if (window.innerWidth < 1024) {
@@ -26,7 +22,7 @@ export default function SpotList({ spots, isLoading }: SpotListProps) {
       }
     }
 
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);

@@ -1,4 +1,3 @@
-// src/lib/places.ts
 import { StudySpot } from '@/types';
 
 interface PlaceWithReviewScore {
@@ -7,7 +6,6 @@ interface PlaceWithReviewScore {
   reviewMentions: string[];
 }
 
-// Add review-related scoring keywords
 const STUDY_KEYWORDS = [
   'study',
   'studying',
@@ -38,7 +36,6 @@ export async function searchNearbyStudySpots(
   service: google.maps.places.PlacesService,
   query: string
 ): Promise<StudySpot[]> {
-  // Define places we never want to show
   const EXCLUDED_PLACES = [
     'dutch bros',
     'drive-thru',
@@ -48,31 +45,26 @@ export async function searchNearbyStudySpots(
   ];
 
   const requests = [
-    // Libraries
     {
       query: `${query} public library university library`,
       type: 'library',
       radius: 10000
     },
-    // Tea houses explicitly
     {
       query: `${query} tea house cafe study`,
       type: 'cafe',
       radius: 5000
     },
-    // Student centers and lounges
     {
       query: `${query} student center student union`,
       type: 'point_of_interest',
       radius: 5000
     },
-    // Cafes for studying
     {
       query: `${query} cafe coffee study`,
       type: 'cafe',
       radius: 5000
     },
-    // Study spaces
     {
       query: `${query} study lounge study hall`,
       type: 'establishment',
@@ -81,7 +73,6 @@ export async function searchNearbyStudySpots(
   ];
 
   try {
-    // Get initial results
     const initialResults = await Promise.all(
       requests.map(req => 
         new Promise<google.maps.places.PlaceResult[]>((resolve) => {
@@ -113,7 +104,6 @@ export async function searchNearbyStudySpots(
         return !EXCLUDED_PLACES.some(excluded => name.includes(excluded.toLowerCase()));
       });
 
-    // Get detailed review data for each place
     const placesWithReviews = await Promise.all(
       filteredResults.map(place => 
         new Promise<PlaceWithReviewScore>((resolve) => {
@@ -128,7 +118,6 @@ export async function searchNearbyStudySpots(
                 let studyScore = 0;
                 const reviewMentions: string[] = [];
 
-                // Analyze each review
                 reviews.forEach(review => {
                   const text = review.text.toLowerCase();
                   STUDY_KEYWORDS.forEach(keyword => {
@@ -141,7 +130,6 @@ export async function searchNearbyStudySpots(
                   });
                 });
 
-                // Normalize score based on number of reviews
                 const normalizedScore = reviews.length > 0 ? 
                   (studyScore / reviews.length) * 5 : 0;
 
@@ -181,7 +169,6 @@ export async function searchNearbyStudySpots(
         reviewMentions
       }));
 
-    // Updated sorting with review analysis
     return spots.sort((a, b) => {
       const getScore = (spot: StudySpot) => {
         let score = 0;
@@ -195,10 +182,8 @@ export async function searchNearbyStudySpots(
         if (name.includes('tea house') || 
             name.includes('tea shoppe')) score += 12;
         
-        // Add review-based study score
         score += (spot.studyScore || 0) * 3;
 
-        // Consider rating
         score += (spot.rating || 0) * 2;
 
         return score;
