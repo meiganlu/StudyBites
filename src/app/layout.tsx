@@ -22,15 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={eb.className}>
-        {/* <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,#1E441E_0%,#F7F9F7_100%)]"> Moved gradient here */}
-        <div className="min-h-screen bg-[#faf9f1]">
-          {/* <nav className="sticky top-0 bg-[#BCC79E]/40 backdrop-blur-md shadow-md z-50">  */}
-          <nav className="sticky top-0 bg-white/10 backdrop-blur-md shadow-md z-50">
-            <div className="max-w-6xl mx-auto p-4">
-              <div className="flex items-center gap-4">
+        {/* <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#cde8ae] to-[#FAF9F1]"> */}
+        <div className="min-h-screen flex flex-col bg-[radial-gradient(ellipse_at_top,#C4C3E3_25%,#FAF9F1_100%)]">
+          {/* Increased vertical padding and adjusted blur/opacity */}
+          <nav className="sticky top-0 z-50 py-6">
+            <div className="max-w-6xl mx-auto px-8">
+              <div className="flex items-center gap-8">
                 <Link 
                   href="/" 
-                  className="text-2xl font-bold text-[#232323] hover:text-[#595959] transition-colors cursor-pointer"
+                  className="text-3xl font-light text-[#292929] hover:text-[#4F4F4F]/80 transition-colors"
                 >
                   StudyBites
                 </Link>
@@ -41,12 +41,16 @@ export default function RootLayout({
             </div>
           </nav>
           
-          <main className="h-[calc(100vh-8rem)]">
+          <main className="flex-1">
             {children}
           </main>
 
-          <footer className="py-4 text-center text-sm text-[#595959]">
-            © 2025 Meigan Lu. All Rights Reserved.
+          <footer className="py-6">
+            <div className="max-w-6xl mx-auto">
+              <p className="text-center text-sm text-[#292929]/70">
+                © 2025 Meigan Lu. All Rights Reserved.
+              </p>
+            </div>
           </footer>
         </div>
       </body>

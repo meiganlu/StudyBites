@@ -62,29 +62,35 @@ export default function Map({ searchQuery, onSpotsFound }: MapProps) {
          if (spots && spots.length > 0) {
            onSpotsFound(spots);
 
-           spots.forEach(spot => {
-             const marker = new google.maps.Marker({
-               position: spot.geometry.location,
-               map: mapToUse,
-               title: spot.name
-             });
+            spots.forEach(spot => {
+              const marker = new google.maps.Marker({
+                position: spot.geometry.location,
+                map: mapToUse,
+                title: spot.name
+              });
 
-             const infoWindow = new google.maps.InfoWindow({
-               content: `
-                 <div class="p-2">
-                   <h3 class="font-semibold">${spot.name}</h3>
-                   <p class="text-sm">${spot.vicinity}</p>
-                   ${spot.rating ? `<p class="text-sm">Rating: ${spot.rating} ⭐</p>` : ''}
-                 </div>
-               `
-             });
+              const infoWindow = new google.maps.InfoWindow({
+                content: `
+                  <div style="padding: 12px; font-family: system-ui;">
+                    <h3 style="font-size: 16px; color: #2C4A3E; font-weight: 500; margin-bottom: 4px;">
+                      ${spot.name}
+                    </h3>
+                    <p style="font-size: 14px; color: #515D5A; margin: 4px 0;">
+                      ${spot.vicinity}
+                    </p>
+                    ${spot.rating ? `
+                      <p style="font-size: 14px; color: #515D5A; margin: 4px 0;">
+                        Rating: ${spot.rating} / 5
+                      </p>
+                    ` : ''}
+                  </div>
+                `
+              });
 
-             marker.addListener('click', () => {
-               infoWindow.open(mapToUse, marker);
-             });
-
-             markersRef.current.push(marker);
-           });
+              marker.addListener('click', () => {
+                infoWindow.open(mapToUse, marker);
+              });
+            });
          }
        }
      } catch (error) {
@@ -97,5 +103,11 @@ export default function Map({ searchQuery, onSpotsFound }: MapProps) {
    };
  }, [searchQuery, currentMap, onSpotsFound]);
 
- return <div ref={mapRef} className="w-full h-full rounded-lg shadow-lg" />;
+ return (
+  <div 
+    ref={mapRef} 
+    className="w-full h-full rounded-2xl shadow-lg" 
+    style={{ maxHeight: '525px' }}
+  />
+);
 }

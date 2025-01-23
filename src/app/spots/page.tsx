@@ -71,29 +71,29 @@ function SearchResults() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#faf9f1]">
-      <div className="max-w-6xl mx-auto p-2 sm:p-4">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 mb-4 sm:mb-6">
-          <h2 className="text-lg sm:text-xl font-semibold text-[#2C4A3E]">
+    <div className="h-[calc(90vh-8rem)] bg-[radial-gradient(ellipse_at_top,#C4C3E3_25%,#FAF9F1_100%)]">
+      <div className="max-w-6xl mx-auto p-4">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl text-[#292929] font-light">
             Study Spots in {query}
           </h2>
           <div className="flex gap-2">
             <button 
               onClick={() => setViewMode('list')}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${
                 viewMode === 'list' 
-                  ? 'bg-[#BCC79E] text-[#2C4A3E]' 
-                  : 'bg-[#E5E7DC] text-[#515D5A] hover:bg-[#CACFBA]'
+                  ? 'bg-[#292929]/90 backdrop-blur-md text-white' 
+                  : 'bg-[#292929]/60 text-white/70 hover:bg-[#292929]/40'
               }`}
             >
               List View
             </button>
             <button 
               onClick={() => setViewMode('map')}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-sm transition-colors ${
+              className={`px-6 py-2 rounded-full transition-all duration-300 ${
                 viewMode === 'map' 
-                  ? 'bg-[#BCC79E] text-[#2C4A3E]' 
-                  : 'bg-[#E5E7DC] text-[#515D5A] hover:bg-[#CACFBA]'
+                  ? 'bg-[#292929]/90 backdrop-blur-md text-white' 
+                  : 'bg-[#292929]/60 text-white/70 hover:bg-[#292929]/40'
               }`}
             >
               Map View
@@ -102,11 +102,11 @@ function SearchResults() {
         </div>
         
         {viewMode === 'map' ? (
-          <div className="h-[60vh] sm:h-[70vh] rounded-xl overflow-hidden shadow-lg">
+          <div className="h-[calc(100vh-12rem)] rounded-2xl overflow-hidden">
             <Map searchQuery={query} onSpotsFound={handleSpotsFound} />
           </div>
         ) : (
-          <div className="h-[calc(100vh-12rem)]">
+          <div className="h-[calc(100vh-12rem)] overflow-auto pr-2">
             <SpotList spots={spots} isLoading={isLoading} />
           </div>
         )}

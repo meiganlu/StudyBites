@@ -2,12 +2,84 @@
 
 StudyBites is a study spot finder to help students and others alike to find the best local study spots. This tool is meant to streamline and optimize finding the perfect study spot based on a person's study needs.
 
-## Features
 
-- Search Functionality: Easily search for local study spots by name, address, or category
+## Core Features
 
-- Interactive Map: Powered by Google Maps JavaScript API for an intuitive and responsive interface
+* **Search Functionality**: Easily search for local study spots by location
 
-- Study Score: Displays a "Study Score" to help users quickly evaluate the suitability of a spot based on various factors
+* **Interactive Map**: Navigate study locations using Google Maps integration
 
-- Accurate Location Data: Leverages Google Geocoding API and Places API to provide precise location details
+* **Study Score**: My rating system evaluates study spots based on various factors
+
+
+### Study Score Breakdown
+
+The Study Score (rated 1-5) evaluates locations based on:
+
+
+* Noise level and ambient environment
+
+* Available amenities (WiFi, power outlets)
+
+* Seating capacity and comfort
+
+* Operating hours
+
+* Previous student ratings
+
+* Study-friendly atmosphere
+
+
+## Tech Stack
+
+* Next.js
+
+* TypeScript
+
+* Tailwind CSS
+
+* Google Maps JavaScript API
+
+* Google Places API
+
+
+## Getting Started
+
+### Prerequisites
+- Make sure to have Google Maps API key ready
+
+### Setup
+1. Clone the repository:
+
+```
+git clone https://github.com/yourusername/studybites.git
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Create `.env.local` and add your Google Maps API key
+
+```
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_api_key
+```
+
+4. Now run the development server!
+
+```
+npm run dev
+```
+
+
+### API Key Setup
+
+1. Enable these Google Cloud APIs:
+
+```
+Maps JavaScript API
+Places API
+Geocoding API
+```

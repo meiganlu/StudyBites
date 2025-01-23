@@ -29,10 +29,8 @@ export default function SpotList({ spots, isLoading }: SpotListProps) {
 
   if (isLoading) {
     return (
-      <div className="text-center py-4 sm:py-6">
-        <div className="animate-pulse">
-          <p className="text-[#515D5A]">Loading study spots...</p>
-        </div>
+      <div className="flex justify-center py-12">
+        <p className="text-white/70">Loading study spots...</p>
       </div>
     );
   }
@@ -65,8 +63,8 @@ export default function SpotList({ spots, isLoading }: SpotListProps) {
             disabled={currentPage === 1}
             className={`px-2 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-colors ${
               currentPage === 1
-                ? 'bg-[#E5E7DC] text-[#515D5A] cursor-not-allowed'
-                : 'bg-[#BCC79E] text-[#2C4A3E] hover:bg-[#A5B586]'
+                ? 'bg-[#797979] text-white cursor-not-allowed'
+                : 'bg-[#292929]/90 text-white hover:bg-[#292929]/50'
             }`}
           >
             Previous
@@ -81,8 +79,8 @@ export default function SpotList({ spots, isLoading }: SpotListProps) {
             disabled={currentPage === totalPages}
             className={`px-2 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm transition-colors ${
               currentPage === totalPages
-                ? 'bg-[#E5E7DC] text-[#515D5A] cursor-not-allowed'
-                : 'bg-[#BCC79E] text-[#2C4A3E] hover:bg-[#A5B586]'
+                ? 'bg-[#797979] text-white cursor-not-allowed'
+                : 'bg-[#292929]/90 text-white hover:bg-[#292929]/50'
             }`}
           >
             Next

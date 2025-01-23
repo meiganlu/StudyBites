@@ -2,40 +2,37 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="h-full flex items-center">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-[calc(100vh-200px)] flex items-center justify-center px-4">
+      <div className="w-full max-w-6xl mx-auto">
         <div className="flex flex-col items-center">
-          <div className="text-center max-w-3xl mb-16">
-            <h1 className="text-4xl md:text-6xl text-[#2C4A3E] mb-6">
+          {/* Main heading section */}
+          <div className="text-center max-w-5xl mb-24">
+            <h1 className="text-3xl md:text-6xl text-[#292929]/90 mt-6 mb-6">
               Find Your <span className="italic">Perfect</span> Study Spot
             </h1>
-            <p className="text-lg text-[#515D5A]">
-              Discover local spots near you specific to your study needs.
+            <p className="text-xl md:text-2xl text-[#292929]/80 max-w-2xl mx-auto font-light tracking-wide">
+              Effortless access to your ideal study space.
             </p>
           </div>
 
-          <div className="w-full">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Feature cards section with increased spacing */}
+          <div className="w-full px-4 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
               <FeatureCard 
-                title="Libraries"
+                title="Find Local Libraries"
                 description="Quiet spaces with free WiFi and plenty of seating"
                 icon="/icons/book.png"
               />
               <FeatureCard 
-                title="Cafés"
+                title="Discover New Cafés"
                 description="Coffee shops perfect for productive work sessions"
                 icon="/icons/coffee.png"
               />
               <FeatureCard 
-                title="Study Rooms"
-                description="Dedicated spaces for focused learning"
+                title="See Their Study Score"
+                description="An evaluation based on noise, amenities, comfort, and ambience"
                 icon="/icons/notebook.png"
               />
-              {/* <FeatureCard 
-                title="Reviews"
-                description="Real feedback from fellow students"
-                icon="/icons/review.png"
-              /> */}
             </div>
           </div>
         </div>
@@ -50,24 +47,26 @@ function FeatureCard({ title, description, icon }: {
   icon: string;
 }) {
   return (
-    <div className="relative group">
-      <div className="absolute inset-0 bg-sage-200 rounded-xl transition-all duration-300 group-hover:blur-sm"></div>
-      <div className="relative bg-[#CACFBA] hover:bg-[#D2D7C2] p-8 rounded-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <div className="group">
+      <div className="bg-white/40 hover:bg-white/50 p-8 rounded-2xl backdrop-blur-md
+        transition-all duration-500 hover:shadow-lg transform hover:-translate-y-1 
+        border border-white/20">
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-[#E5E7DC] rounded-full">
+          <div className="p-4 bg-white/20 rounded-full backdrop-blur-md
+            transition-transform duration-500 group-hover:scale-110">
             <Image 
               src={icon} 
               alt={title}
-              width={24} 
-              height={24}
-              className="w-6 h-6"
+              width={28} 
+              height={28}
+              className="w-7 h-7"
             />
           </div>
         </div>
-        <h3 className="font-semibold text-[#2C4A3E] text-lg text-center mb-3">
+        <h3 className="font-light text-[#292929] text-2xl text-center mb-4">
           {title}
         </h3>
-        <p className="text-[#515D5A] text-center text-sm leading-relaxed">
+        <p className="text-[#292929]/80 text-center text-lg leading-relaxed font-light">
           {description}
         </p>
       </div>
