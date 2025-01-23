@@ -6,9 +6,7 @@ StudyBites is a study spot finder to help students and others alike to find the 
 ## Core Features
 
 * **Search Functionality**: Easily search for local study spots by location
-
 * **Interactive Map**: Navigate study locations using Google Maps integration
-
 * **Study Score**: My rating system evaluates study spots based on various factors
 
 
@@ -18,28 +16,19 @@ The Study Score (rated 1-5) evaluates locations based on:
 
 
 * Noise level and ambient environment
-
 * Available amenities (WiFi, power outlets)
-
 * Seating capacity and comfort
-
 * Operating hours
-
 * Previous student ratings
-
 * Study-friendly atmosphere
 
 
 ## Tech Stack
 
 * Next.js
-
 * TypeScript
-
 * Tailwind CSS
-
 * Google Maps JavaScript API
-
 * Google Places API
 
 
